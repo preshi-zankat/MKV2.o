@@ -1,55 +1,110 @@
 import React from "react";
 
 const Home = () => {
-  const features = [
-    {
-      title: "📝 Easy Journaling",
-      desc: "Write and organize your daily entries with a clean, distraction-free interface.",
-    },
-    {
-      title: "📸 Add Images",
-      desc: "Attach images and create a more vivid, memorable journal experience.",
-    },
-    {
-      title: "🔒 Private & Secure",
-      desc: "Your thoughts are safe with enterprise-grade security and encryption.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-white to-blue-100 flex flex-col items-center justify-center p-6">
-      {/* Hero Section */}
-      <h1 className="text-5xl font-bold text-gray-800 mb-4 text-center">
-        Because Memories Deserve to Stay✨
-      </h1>
-      <p className="text-lg text-gray-600 max-w-xl text-center mb-8">
-        Capture your thoughts, feelings, and daily experiences in one secure place.
-      </p>
+    <div className="min-h-screen bg-[#FAFAFA]">
 
-      {/* Buttons */}
-      <div className="flex gap-4">
-        <button className="px-6 py-3 rounded-xl bg-pink-500 text-white font-semibold hover:bg-pink-600 transition">
-          Get Started
-        </button>
-        <button className="px-6 py-3 rounded-xl bg-white border border-gray-300 text-gray-700 font-semibold hover:bg-gray-100 transition">
-          Learn More
-        </button>
-      </div>
+      {/* NAVBAR */}
+      {/* <nav className="w-full fixed top-0 left-0 z-50 bg-white/70 backdrop-blur-md border-b border-gray-100 px-8 py-4 flex justify-between items-center">
+        <h1 className="text-2xl font-semibold text-[#F08787]">
+          DearDiary ✨
+        </h1>
+        <div className="flex gap-4">
+          <button className="text-gray-600 hover:text-[#F08787] transition">
+            Login
+          </button>
+          <button className="bg-[#F08787] text-white px-5 py-2 rounded-full shadow-sm hover:bg-[#e06f6f] transition">
+            Get Started
+          </button>
+        </div>
+      </nav> */}
 
-      {/* Features - Professional Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-6xl">
-        {features.map((card, i) => (
-          <div
-            key={i}
-            className="p-8 rounded-2xl bg-gradient-to-br from-white via-purple-50 to-pink-50 
-                       border border-gray-200 shadow-sm hover:shadow-md 
-                       transition-transform duration-300 hover:-translate-y-1"
-          >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-3">{card.title}</h2>
-            <p className="text-gray-600 leading-relaxed">{card.desc}</p>
+      {/* HERO */}
+      <section className="pt-28 px-6 md:px-16 flex flex-col md:flex-row items-center">
+
+        {/* LEFT */}
+        <div className="md:w-1/2">
+          <h2 className="text-5xl font-light leading-tight mb-6">
+            Write Your Story, <br />
+            <span className="text-[#F08787] font-medium">
+              One Page at a Time
+            </span>
+          </h2>
+
+          <p className="text-gray-500 mb-8 max-w-md text-lg">
+            A calm and beautiful space to express your thoughts, track your mood,
+            and keep your memories forever.
+          </p>
+
+          <div className="flex gap-4">
+            <button className="bg-[#F08787] text-white px-6 py-3 rounded-full shadow-md hover:scale-105 transition">
+              Start Writing
+            </button>
+            <button className="px-6 py-3 rounded-full border border-gray-300 hover:bg-gray-100 transition">
+              Explore
+            </button>
           </div>
-        ))}
-      </div>
+        </div>
+
+        {/* RIGHT */}
+        <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+          <img
+            src="https://images.pexels.com/photos/1930381/pexels-photo-1930381.jpeg"
+            alt="journal"
+            className="rounded-2xl shadow-xl w-[92%]"
+          />
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="px-6 md:px-16 py-20">
+        <h3 className="text-3xl font-semibold text-center mb-12">
+          Why You’ll Love It 💖
+        </h3>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          
+          <div className="p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition">
+            <h4 className="text-lg font-semibold mb-2">📝 Easy Writing</h4>
+            <p className="text-gray-500 text-sm">
+              Distraction-free journaling with a clean editor.
+            </p>
+          </div>
+
+          <div className="p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition">
+            <h4 className="text-lg font-semibold mb-2">🔒 Private & Secure</h4>
+            <p className="text-gray-500 text-sm">
+              Your thoughts are safe and only yours.
+            </p>
+          </div>
+
+          <div className="p-6 bg-white rounded-2xl shadow-sm hover:shadow-lg transition">
+            <h4 className="text-lg font-semibold mb-2">🌙 Mood Tracking</h4>
+            <p className="text-gray-500 text-sm">
+              Understand your emotions over time.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="text-center py-20 bg-gradient-to-r from-[#FDECEC] to-[#FFF5F5]">
+        <h3 className="text-3xl font-semibold mb-4">
+          Start Your Journey Today ✨
+        </h3>
+        <p className="text-gray-500 mb-6">
+          Join thousands writing their stories daily
+        </p>
+        <button className="bg-[#F08787] text-white px-8 py-3 rounded-full shadow-md hover:scale-105 transition">
+          Create Account
+        </button>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="text-center py-6 text-gray-400 text-sm">
+        © 2026 DearDiary. Made with 💖
+      </footer>
     </div>
   );
 };

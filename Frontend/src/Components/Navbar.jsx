@@ -1,45 +1,77 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
+const Navbar = () => {
+  const location = useLocation();
+
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "Journal", path: "/Writeing" },
+    { name: "About", path: "/about" },
+  ];
 
   return (
-    <nav className="bg-[#7B2CBF] shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="text-white font-bold text-xl tracking-wide">
-            ManKeVichar✨
-          </div>
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
+      
+      <div className="flex justify-between items-center px-6 py-3 rounded-full 
+      bg-white/70 backdrop-blur-lg shadow-md border border-gray-100">
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
-            <a href="/" className="text-white hover:text-[#F8C8DC] transition">Home</a>
-            <a href="/login" className="text-white hover:text-[#F8C8DC] transition">Login</a>
-            <a href="/signup" className="text-white hover:text-[#F8C8DC] transition">Sign Up</a>
-            <a href="/support" className="text-white hover:text-[#F8C8DC] transition">Contact</a>
-          </div>
+        {/* LOGO */}
+        <Link
+          to="/"
+          className="text-xl font-semibold text-[#F08787]"
+        >
+          DearDiary ✨
+        </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-white focus:outline-none"
+        {/* NAV LINKS */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`relative transition ${
+                location.pathname === item.path
+                  ? "text-[#F08787]"
+                  : "text-gray-600 hover:text-[#F08787]"
+              }`}
+            >
+              {item.name}
+
+              {/* underline animation */}
+              <span
+                className={`absolute left-0 -bottom-1 h-[2px] bg-[#F08787] transition-all duration-300 ${
+                  location.pathname === item.path
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
+                }`}
+              ></span>
+            </Link>
+          ))}
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="flex items-center gap-3">
+          
+          <Link
+            to="/login"
+            className="text-sm text-gray-600 hover:text-[#F08787] transition"
           >
-            {open ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </div>
+            Login
+          </Link>
 
-      {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden bg-[#6A1B9A] px-4 pb-4 space-y-2">
-          <a href="#" className="block text-white hover:text-[#F8C8DC] transition">Home</a>
-          <a href="#" className="block text-white hover:text-[#F8C8DC] transition">About</a>
-          <a href="#" className="block text-white hover:text-[#F8C8DC] transition">Projects</a>
-          <a href="#" className="block text-white hover:text-[#F8C8DC] transition">Contact</a>
+          <Link
+            to="/signup"
+            className="bg-[#F08787] text-white px-4 py-2 rounded-full text-sm 
+            shadow-sm hover:scale-105 hover:bg-[#e06f6f] transition"
+          >
+            Get Started
+          </Link>
         </div>
-      )}
+
+      </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
